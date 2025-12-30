@@ -2,8 +2,7 @@ name: Deploy Astro (pnpm) to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 permissions:
   contents: read
@@ -13,28 +12,22 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Enable pnpm via corepack (MOST STABLE METHOD)
       - name: Enable pnpm
         run: |
           corepack enable
-          corepack prepare pnpm@9.15.0 --activate
+          corepack prepare pnpm@9 --activate
           pnpm --version
 
-      # Setup Node.js (NO caching)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Disable workspace mode explicitly
       - name: Install dependencies
-        run: |
-          pnpm install --no-workspaces
+        run: pnpm install
 
       - name: Build Astro site
         run: pnpm run build
@@ -48,5 +41,4 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4
