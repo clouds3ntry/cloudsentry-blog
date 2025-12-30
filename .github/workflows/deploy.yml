@@ -18,28 +18,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1️⃣ Install pnpm FIRST
+      # Setup pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      # 2️⃣ Setup Node.js (after pnpm exists)
+      # Setup Node.js (NO pnpm cache)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
-      # 3️⃣ Install dependencies
+      # Install dependencies
       - name: Install dependencies
         run: pnpm install
 
-      # 4️⃣ Build Astro site
+      # Build Astro site
       - name: Build Astro site
         run: pnpm run build
 
-      # 5️⃣ Upload build output
+      # Upload build output
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -48,7 +47,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
