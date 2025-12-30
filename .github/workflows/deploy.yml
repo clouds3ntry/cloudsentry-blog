@@ -18,27 +18,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Setup pnpm
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
+      # Enable pnpm via corepack (MOST STABLE METHOD)
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.15.0 --activate
+          pnpm --version
 
-      # Setup Node.js (NO pnpm cache)
+      # Setup Node.js (NO caching)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Install dependencies
+      # Disable workspace mode explicitly
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          pnpm install --no-workspaces
 
-      # Build Astro site
       - name: Build Astro site
         run: pnpm run build
 
-      # Upload build output
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
