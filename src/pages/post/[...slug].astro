@@ -1,13 +1,15 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
-import BlogPost from '@/layouts/BlogPost'
-import Code from '@/components/mdx/Code'
-import ListRelatedPosts from '@/components/ListRelatedPosts'
-import Share from '@/components/Share'
-import TableOfContents from '@/components/TableOfContents'
+import BlogPost from '@/layouts/BlogPost.astro'
+import Code from '@/components/mdx/Code.astro'
+import ListRelatedPosts from '@/components/ListRelatedPosts.astro'
+import ShareExtended from '@/components/ShareExtended.astro'
+import TableOfContents from '@/components/TableOfContents.astro'
 import { getPosts } from '@/utils'
-import SButton from '@/components/mdx/SButton'
-import Disqus from '@/components/Disqus'
+import SButton from '@/components/mdx/SButton.astro'
+import Disqus from '@/components/Disqus.astro'
+import StructuredData from '@/components/StructuredData.astro'
+import ReadingProgress from '@/components/ReadingProgress.astro'
 import { disqusConfig } from '@/data/disqus.config'
 
 const posts = await getCollection('blog')
@@ -44,28 +46,41 @@ const disqusEnabled = disqusConfig.enabled
 	headings={headings}
 	readTime={remarkPluginFrontmatter.minutesRead}
 >
-	<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'>
-		<!-- aside  -->
+	<div class='grid grid-cols-1 md:grid-cols-[280px_1fr] gap-12 mt-8'>
+		<!-- Sidebar -->
 		<aside class='md:flex flex-col gap-8 hidden'>
-			<Share />
-			<div class='sticky top-24 self-start hidden md:block transition-all duration-200'>
-				{headings && headings.length > 0 && <TableOfContents {headings} />}
+			<div class='sticky top-6 space-y-4'>
+				<ShareExtended title={post.data.title} />
+				{
+					headings && headings.length > 0 && (
+						<div class='bg-[#020617] p-6'>
+							<TableOfContents {headings} />
+						</div>
+					)
+				}
 			</div>
 		</aside>
 
-		<!-- post -->
+		<!-- Content -->
 		<article class='max-w-full w-full'>
-			<div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
+			<div class='prose prose-lg md:prose-xl mb-16'>
 				<Content components={{ pre: Code, SButton }} />
 			</div>
 
-			<!-- related posts -->
-			<footer>
-				<h2 class='font-bold text-lg dark:text-white mb-6'>Related Posts</h2>
+			<!-- Related Posts -->
+			<footer class='surface-secondary p-8 rounded-lg'>
+				<h2 class='font-semibold text-xl text-[#F8FAFC] mb-6'>Related Articles</h2>
 				<ListRelatedPosts posts={relatedPosts} />
 			</footer>
+
+			<!-- Share Section -->
+			<div class='flex justify-center mt-8'>
+				<ShareExtended title={post.data.title} />
+			</div>
 		</article>
 	</div>
 
 	{disqusEnabled && <Disqus />}
+	<StructuredData post={post} url={Astro.url.href} />
+	<ReadingProgress />
 </BlogPost>

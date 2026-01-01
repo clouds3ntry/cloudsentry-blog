@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TitlePage from '../components/TitlePage.astro'
+
+const title = 'Terms of Service | CloudSentry'
+const description =
+	'Terms of Service for CloudSentry outlining website usage rules, disclaimers, intellectual property rights, and limitations of liability.'
+---
+
+<BaseLayout title={title} description={description}>
+	<TitlePage title='Terms of Service' />
+	<section class='policy-container'>
+		<p>
+			Welcome to <strong>CloudSentry</strong>. By accessing or using this website, you agree to
+			comply with and be bound by the following Terms of Service. If you do not agree with any part
+			of these terms, please do not use CloudSentry.
+		</p>
+
+		<h2>Use of the Website</h2>
+		<p>
+			CloudSentry provides educational content, tutorials, and tools related to cloud computing,
+			DevOps, security, Linux, and modern infrastructure.
+		</p>
+		<br />
+		<p>
+			You agree to use this website only for lawful purposes and in a way that does not violate any
+			applicable laws or regulations.
+		</p>
+
+		<h2>Intellectual Property Rights</h2>
+		<p>
+			Unless otherwise stated, all content on CloudSentry—including articles, tutorials, text,
+			graphics, logos, and tools—is the intellectual property of CloudSentry.
+		</p>
+		<br />
+		<p>
+			You may view, download, and print content for personal and non-commercial use only. You may
+			not reproduce, distribute, modify, or republish any material from this website without prior
+			written permission.
+		</p>
+
+		<h2>Educational Disclaimer</h2>
+		<p>
+			All content provided on CloudSentry is for <strong
+				>educational and informational purposes only</strong
+			>. While we strive to keep the information accurate and up to date, CloudSentry makes no
+			warranties or representations regarding the completeness, accuracy, or reliability of any
+			content.
+		</p>
+		<br />
+		<p>
+			Any actions you take based on the information found on this website are strictly at your own
+			risk.
+		</p>
+
+		<h2>Tools and Utilities</h2>
+		<p>
+			CloudSentry may provide online tools and utilities, including browser-based tools. These tools
+			are provided “as is” without any warranties.
+		</p>
+		<br />
+		<p>
+			CloudSentry is not responsible for any data loss, system damage, or security issues resulting
+			from the use of these tools. Users are responsible for verifying results independently.
+		</p>
+
+		<h2>Third-Party Links</h2>
+		<p>
+			CloudSentry may contain links to third-party websites or services. These links are provided
+			for convenience and informational purposes only.
+		</p>
+		<br />
+		<p>
+			CloudSentry has no control over the content, policies, or practices of any third-party
+			websites and assumes no responsibility for them.
+		</p>
+
+		<h2>Limitation of Liability</h2>
+		<p>
+			In no event shall CloudSentry, its owners, contributors, or affiliates be liable for any
+			direct, indirect, incidental, consequential, or special damages arising out of or in
+			connection with the use of this website.
+		</p>
+		<br />
+		<p>
+			This includes, but is not limited to, loss of data, loss of profits, or business interruption.
+		</p>
+
+		<h2>Changes to These Terms</h2>
+		<p>
+			CloudSentry reserves the right to modify or replace these Terms of Service at any time. Any
+			changes will be effective immediately upon posting on this page.
+		</p>
+		<br />
+		<p>It is your responsibility to review these Terms periodically for updates.</p>
+
+		<h2>Governing Law</h2>
+		<p>
+			These Terms of Service shall be governed and interpreted in accordance with the laws of <strong
+				>India</strong
+			>, without regard to its conflict of law provisions.
+		</p>
+
+		<h2>Contact Information</h2>
+		<p>
+			If you have any questions or concerns about these Terms of Service, please contact CloudSentry
+			through the website.
+		</p>
+
+		<p class='updated-date'>
+			<strong>Last updated:</strong> January 2026
+		</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.policy-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+		color: inherit;
+	}
+
+	h1 {
+		/* Removed - now uses TitlePage component */
+	}
+
+	h2 {
+		margin-top: 2rem;
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: #f8fafc;
+	}
+
+	p {
+		line-height: 1.7;
+		font-size: 1rem;
+		color: #cbd5e1;
+	}
+
+	.updated-date {
+		margin-top: 2rem;
+		font-size: 0.9rem;
+		color: #94a3b8;
+	}
+
+	/* Responsive design */
+	@media (max-width: 768px) {
+		.policy-container {
+			padding: 1.5rem 1rem;
+		}
+
+		h2 {
+			font-size: 1.3rem;
+			margin-top: 1.5rem;
+		}
+
+		p,
+		li {
+			font-size: 0.95rem;
+			line-height: 1.6;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.policy-container {
+			padding: 1rem 0.75rem;
+		}
+
+		h2 {
+			font-size: 1.2rem;
+		}
+	}
+</style>

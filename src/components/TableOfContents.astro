@@ -1,5 +1,5 @@
 ---
-import TableOfContentsHeading from '@/components/TabletOfContentsHeading'
+import TableOfContentsHeading from '@/components/TabletOfContentsHeading.astro'
 
 const { headings } = Astro.props
 
@@ -28,9 +28,9 @@ function buildToc(headings: TableOfContent[]) {
 }
 ---
 
-<nav class='max-w-xs dark:text-black'>
-	<p class='font-bold mb-3 text-2xl dark:text-white'>Index</p>
-	<ul class='[text-wrap:balance] flex flex-col gap-1'>
+<nav class='max-w-xs'>
+	<p class='font-semibold mb-4 text-lg text-[#F8FAFC]'>Table of Contents</p>
+	<ul class='space-y-2'>
 		{toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
 	</ul>
 </nav>

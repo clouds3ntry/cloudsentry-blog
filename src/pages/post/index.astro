@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ListPosts from '@/components/ListPosts.astro'
+import ListCategories from '@/components/ListCategories.astro'
+import TitlePage from '@/components/TitlePage.astro'
+import { getPosts } from '@/utils'
+
+const posts = await getPosts()
+---
+
+<BaseLayout
+	title='All Posts'
+	description='Browse all blog posts on CloudSentry. Technical insights, tutorials, and guides about cloud computing, DevOps, security, and Linux.'
+>
+	<div class='space-y-8'>
+		<TitlePage title='All Posts' />
+		<div class='flex justify-center'>
+			<ListCategories />
+		</div>
+		<ListPosts posts={posts} />
+	</div>
+</BaseLayout>

@@ -1,21 +1,27 @@
 import { defineConfig } from 'astro/config'
+import path from 'node:path'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 import { siteConfig } from './src/data/site.config'
 
-// https://astro.build/config
 export default defineConfig({
 	site: siteConfig.site,
+
+	alias: {
+		'@': path.resolve('./src'),
+	},
+
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		drafts: true,
 		shikiConfig: {
 			theme: 'material-theme-palenight',
-			wrap: true
-		}
+			wrap: true,
+		},
 	},
+
 	integrations: [
 		mdx({
 			syntaxHighlight: 'shiki',
@@ -23,12 +29,12 @@ export default defineConfig({
 				experimentalThemes: {
 					light: 'vitesse-light',
 					dark: 'material-theme-palenight',
-				  },
-				wrap: true
+				},
+				wrap: true,
 			},
-			drafts: true
+			drafts: true,
 		}),
 		sitemap(),
-		tailwind()
-	]
+		tailwind(),
+	],
 })

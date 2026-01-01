@@ -11,7 +11,13 @@ const blog = defineCollection({
 			pubDate: z
 				.string()
 				.or(z.date())
-				.transform((val) => new Date(val)),
+				.transform((val) => {
+					const date = new Date(val)
+					if (isNaN(date.getTime())) {
+						throw new Error(`Invalid date: ${val}`)
+					}
+					return date
+				}),
 			heroImage: image(),
 			category: z.enum(CATEGORIES),
 			tags: z.array(z.string()),

@@ -1,0 +1,30 @@
+---
+
+---
+
+<div
+	id='reading-progress'
+	class='fixed top-0 left-0 w-0 h-1 bg-[#3B82F6] z-50 transition-all duration-150'
+>
+</div>
+
+<script>
+	function updateReadingProgress() {
+		const progressBar = document.getElementById('reading-progress')
+		if (!progressBar) return
+
+		const scrollTop = window.scrollY
+		const docHeight = document.documentElement.scrollHeight - window.innerHeight
+		const scrollPercent = (scrollTop / docHeight) * 100
+
+		progressBar.style.width = `${Math.min(scrollPercent, 100)}%`
+	}
+
+	window.addEventListener('scroll', updateReadingProgress)
+	document.addEventListener('astro:after-swap', () => {
+		window.addEventListener('scroll', updateReadingProgress)
+		updateReadingProgress()
+	})
+
+	updateReadingProgress()
+</script>

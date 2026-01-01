@@ -1,0 +1,77 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { siteConfig } from '@/data/site.config'
+---
+
+<BaseLayout
+	title='404 - Page Not Found'
+	description="The page you're looking for doesn't exist. Return to CloudSentry homepage or browse our latest articles."
+>
+	<div class='flex flex-col items-center justify-center min-h-[60vh] text-center space-y-8'>
+		<!-- 404 Illustration -->
+		<div class='relative'>
+			<div class='text-[12rem] md:text-[16rem] font-bold text-[#1E293B] select-none'>404</div>
+			<div class='absolute inset-0 flex items-center justify-center'>
+				<svg
+					class='w-24 h-24 md:w-32 md:h-32 text-[#3B82F6] animate-pulse'
+					fill='none'
+					stroke='currentColor'
+					viewBox='0 0 24 24'
+				>
+					<path
+						stroke-linecap='round'
+						stroke-linejoin='round'
+						stroke-width='2'
+						d='M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.5-.935-6.072-2.456M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9'
+					></path>
+				</svg>
+			</div>
+		</div>
+
+		<!-- Error Message -->
+		<div class='space-y-4 max-w-md'>
+			<h1 class='text-3xl md:text-4xl font-bold text-[#F8FAFC]'>Page Not Found</h1>
+			<p class='text-lg text-[#94A3B8] leading-relaxed'>
+				Oops! The page you're looking for seems to have wandered off into the cloud. Let's get you
+				back on track.
+			</p>
+		</div>
+
+		<!-- Action Buttons -->
+		<div class='flex flex-col sm:flex-row gap-4'>
+			<a href='/' class='btn-primary px-6 py-3 text-center'> ← Back to Home</a>
+			<a href='/post' class='btn-secondary px-6 py-3 text-center'> Browse Articles</a>
+		</div>
+
+		<!-- Helpful Links -->
+		<div class='pt-8 border-t border-[#1E293B] w-full max-w-md'>
+			<p class='text-sm text-[#94A3B8] mb-4'>You might be looking for:</p>
+			<div class='flex flex-wrap justify-center gap-4 text-sm'>
+				<a href='/about' class='text-[#60A5FA] hover:text-[#93C5FD] transition-colors'>About</a>
+				<a href='/privacy' class='text-[#60A5FA] hover:text-[#93C5FD] transition-colors'>Privacy</a>
+				<a href='/terms' class='text-[#60A5FA] hover:text-[#93C5FD] transition-colors'>Terms</a>
+				<a
+					href='https://hash.cloudsentry.in/'
+					target='_blank'
+					class='text-[#60A5FA] hover:text-[#93C5FD] transition-colors'>Hash Tool</a
+				>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script>
+	// Add some interactive animation
+	document.addEventListener('DOMContentLoaded', () => {
+		const illustration = document.querySelector('.relative')
+		if (illustration) {
+			illustration.addEventListener('mouseenter', () => {
+				illustration.style.transform = 'scale(1.05)'
+				illustration.style.transition = 'transform 0.3s ease'
+			})
+			illustration.addEventListener('mouseleave', () => {
+				illustration.style.transform = 'scale(1)'
+			})
+		}
+	})
+</script>

@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout'
-import ListPosts from '@/components/ListPosts'
-import ListCategories from '@/components/ListCategories'
-import TitlePage from '@/components/TitlePage'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ListPosts from '@/components/ListPosts.astro'
+import ListCategories from '@/components/ListCategories.astro'
+import TitlePage from '@/components/TitlePage.astro'
 import { sluglify, unsluglify, getCategories, getPosts } from '@/utils'
 import { siteConfig } from '@/data/site.config'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination.astro'
 
 export async function getStaticPaths({ paginate }: any) {
 	const categories = await getCategories()
@@ -35,9 +35,16 @@ const categoryName = (await getCategories()).find(
 const posts = page.data
 ---
 
-<BaseLayout title={categoryName}>
-	<TitlePage title={categoryName} />
-	<ListCategories activeCategory={params.category} />
-	<ListPosts posts={posts} />
-	<Pagination page={page} />
+<BaseLayout
+	title={categoryName}
+	description={`Browse all ${categoryName} posts on CloudSentry. Technical insights, tutorials, and guides about ${categoryName.toLowerCase()}.`}
+>
+	<div class='space-y-8'>
+		<TitlePage title={categoryName} />
+		<div class='flex justify-center'>
+			<ListCategories activeCategory={params.category} />
+		</div>
+		<ListPosts posts={posts} />
+		<Pagination page={page} />
+	</div>
 </BaseLayout>

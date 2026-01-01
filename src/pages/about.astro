@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TitlePage from '../components/TitlePage.astro'
+
+const title = 'About CloudSentry | Cloud, DevOps & Security Blog'
+const description =
+	'CloudSentry is a technology-focused blog covering Cloud Computing, DevOps, Security, Linux, and hands-on tutorials to simplify modern infrastructure concepts.'
+---
+
+<BaseLayout title={title} description={description}>
+	<TitlePage title='About CloudSentry' />
+	<section class='about-container'>
+		<p>
+			<strong>CloudSentry</strong> is a technology-focused blog dedicated to
+			<strong> Cloud Computing, DevOps, Security, and modern infrastructure practices</strong>. The
+			goal of CloudSentry is to make complex technical concepts
+			<strong> simple, practical, and actionable</strong> for learners and professionals alike.
+		</p>
+		<br />
+		<p>
+			In today’s fast-evolving tech landscape, CloudSentry acts as a
+			<strong> trusted knowledge hub</strong>, helping readers understand how cloud platforms,
+			systems, and security mechanisms work in real-world environments.
+		</p>
+
+		<h2>🚀 Our Mission</h2>
+		<ul>
+			<li>Simplify cloud, DevOps, and security concepts</li>
+			<li>Share hands-on tutorials and real-world examples</li>
+			<li>Help engineers build strong fundamentals</li>
+			<li>Provide useful tools that solve practical problems</li>
+			<li>Promote best practices in performance, reliability, and security</li>
+		</ul>
+
+		<h2>🧠 What You’ll Find on CloudSentry</h2>
+
+		<h3>☁️ Cloud Computing</h3>
+		<p>
+			Cloud fundamentals, AWS concepts, architecture patterns, IAM, networking, and cost
+			optimization.
+		</p>
+
+		<h3>⚙️ DevOps</h3>
+		<p>
+			CI/CD pipelines, automation, Git workflows, Infrastructure as Code, and DevOps best practices.
+		</p>
+
+		<h3>🔐 Security</h3>
+		<p>
+			Cryptography (hashing, encryption), cloud security basics, vulnerabilities, and mitigation
+			techniques.
+		</p>
+
+		<h3>🐧 Linux & Systems</h3>
+		<p>
+			Linux fundamentals, server administration, monitoring, troubleshooting, and performance
+			analysis.
+		</p>
+
+		<h3>📘 Tutorials & Guides</h3>
+		<p>
+			Step-by-step guides, beginner-friendly walkthroughs, and hands-on labs designed for real
+			learning.
+		</p>
+
+		<h2>🛠 Tools & Utilities</h2>
+		<p>CloudSentry also provides lightweight, browser-based tools such as:</p>
+		<ul>
+			<li>Online hash generators</li>
+			<li>Security and developer utilities</li>
+		</ul>
+		<p>These tools are built with privacy, speed, and simplicity in mind.</p>
+
+		<h2>🎯 Who CloudSentry Is For</h2>
+		<ul>
+			<li>Cloud & DevOps beginners</li>
+			<li>Linux and system administrators</li>
+			<li>Security enthusiasts</li>
+			<li>Engineering students</li>
+			<li>Professionals preparing for certifications</li>
+		</ul>
+
+		<h2>🧭 Our Philosophy</h2>
+		<ul>
+			<li>Clarity over complexity</li>
+			<li>Practical learning over theory-heavy content</li>
+			<li>Performance, security, and reliability by default</li>
+			<li>Quality content, not noise</li>
+		</ul>
+		<br />
+		<p>
+			The name <strong>CloudSentry</strong> represents
+			<strong> protection, monitoring, and trust</strong> — core principles of modern infrastructure and
+			security.
+		</p>
+
+		<h2>🌱 Looking Ahead</h2>
+		<p>
+			CloudSentry is continuously evolving with plans to publish in-depth technical articles, expand
+			developer tools, and create certification-focused learning paths.
+		</p>
+
+		<blockquote>
+			<strong>Learn. Secure. Scale.</strong><br />
+			That’s CloudSentry.
+		</blockquote>
+	</section>
+</BaseLayout>
+
+<style>
+	.about-container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 3rem 2rem;
+		line-height: 1.8;
+		color: inherit;
+	}
+
+	h1 {
+		/* Removed custom styling - now uses TitlePage component */
+	}
+
+	h2 {
+		margin-top: 3rem;
+		margin-bottom: 1.5rem;
+		font-size: 1.8rem;
+		font-weight: 700;
+		border-bottom: 2px solid #1e293b;
+		padding-bottom: 0.5rem;
+		color: #f8fafc;
+	}
+
+	h3 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		font-size: 1.4rem;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #f8fafc;
+	}
+
+	p {
+		line-height: 1.8;
+		font-size: 1.1rem;
+		margin-bottom: 1.5rem;
+		color: #cbd5e1;
+	}
+
+	ul {
+		margin: 1.5rem 0;
+		padding-left: 0;
+		list-style: none;
+	}
+
+	li {
+		line-height: 1.8;
+		font-size: 1.1rem;
+		margin-bottom: 0.8rem;
+		padding-left: 1.5rem;
+		position: relative;
+		color: #cbd5e1;
+	}
+
+	li::before {
+		content: '▸';
+		position: absolute;
+		left: 0;
+		color: #3b82f6;
+		font-weight: bold;
+	}
+
+	strong {
+		font-weight: 700;
+		color: #f8fafc;
+	}
+
+	blockquote {
+		margin: 2rem 0;
+		padding-left: 1rem;
+		border-left: 4px solid #3b82f6;
+		font-style: italic;
+		color: #cbd5e1;
+	}
+
+	/* Section spacing */
+	.about-container > * + * {
+		margin-top: 1.5rem;
+	}
+
+	.about-container > h2 + * {
+		margin-top: 1rem;
+	}
+
+	/* Responsive design */
+	@media (max-width: 768px) {
+		.about-container {
+			padding: 1.5rem 1rem;
+		}
+
+		h2 {
+			font-size: 1.4rem;
+			margin-top: 2rem;
+		}
+
+		h3 {
+			font-size: 1.2rem;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.25rem;
+		}
+
+		p,
+		li {
+			font-size: 1rem;
+			line-height: 1.6;
+		}
+
+		li {
+			padding-left: 1.2rem;
+		}
+
+		blockquote {
+			margin: 1.5rem 0;
+			padding-left: 0.75rem;
+			font-size: 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.about-container {
+			padding: 1rem 0.75rem;
+		}
+
+		h2 {
+			font-size: 1.3rem;
+		}
+
+		h3 {
+			font-size: 1.1rem;
+		}
+	}
+</style>

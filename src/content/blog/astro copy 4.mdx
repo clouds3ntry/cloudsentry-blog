@@ -3,7 +3,7 @@ title: 'Components'
 description: 'Astro components are HTML templates with superpowers. They are a superset of HTML, with support for including components and JavaScript expressions.'
 pubDate: 'Jul 02 2022'
 heroImage: '../../assets/images/banner.jpg'
-category: 'Category 3'
+category: 'Security'
 tags: ['JavaScript', 'css', 'HTML5', 'GitHub', 'Ordenador']
 ---
 
@@ -156,8 +156,10 @@ Astro component syntax is a superset of HTML. It was designed to feel familiar t
 In Astro, you use the standard `kebab-case` format for all HTML attributes instead of the `camelCase` used in JSX. This even works for `class`, which is not supported by React.
 
 ```jsx del={1} ins={2} title="example.astro"
-<div className="box" dataValue="3" />
-<div class="box" data-value="3" />
+<>
+	<div className='box' dataValue='3' />
+	<div class='box' data-value='3' />
+</>
 ```
 
 #### Multiple Elements

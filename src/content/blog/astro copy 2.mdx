@@ -5,7 +5,7 @@ description: >-
   more, the new MacBook Pro is the best laptop Apple has ever made.
 pubDate: 2022-07-01T22:00:00.000Z
 heroImage: ../../assets/images/bg.jpg
-category: Category 1
+category: Cloud Computing
 tags:
   - JavaScript
   - css
@@ -162,8 +162,10 @@ Astro component syntax is a superset of HTML. It was designed to feel familiar t
 In Astro, you use the standard `kebab-case` format for all HTML attributes instead of the `camelCase` used in JSX. This even works for `class`, which is not supported by React.
 
 ```jsx
-<div className="box" dataValue="3" />
-<div class="box" data-value="3" />
+<>
+	<div className='box' dataValue='3' />
+	<div class='box' data-value='3' />
+</>
 ```
 
 #### Multiple Elements

@@ -1,51 +1,66 @@
 ---
-import HeaderLink from '@/components/HeaderLink'
+import HeaderLink from '@/components/HeaderLink.astro'
 import MenuIcon from './icons/MenuIcon.astro'
-import Search from '@/components/Search'
+import Search from '@/components/Search.astro'
 import TagIcon from './icons/TagIcon.astro'
-import ToggleTheme from './ToggleTheme.astro'
 import { SOCIALNETWORKS } from '@/data/links'
 ---
 
-<header class='relative flex items-center h-12 font-semibold'>
-	<a class='text-lg mr-auto' href='/'>Home</a>
+<header class='sticky top-0 z-50 border-b border-[#1E293B] bg-[#020617]'>
+	<div class='flex items-center justify-between h-16 px-4 max-w-6xl mx-auto'>
+		<a class='text-xl font-bold text-[#F8FAFC] hover:text-[#60A5FA] transition-colors' href='/'>
+			Home
+		</a>
 
-	<div
-		id='astro-header-drawer'
-		class='shadow rounded-l-lg md:bg-transparent dark:md:bg-transparent bg-white dark:bg-[#0a0910] md:shadow-none md:rounded-none md:border-none md:h-auto md:static absolute transition-transform duration-300 ease-in translate-x-96 md:translate-x-0 top-12 -right-5 pl-4 pt-6 pb-4 md:p-0 h-[200px] w-[200px] z-50'
-	>
-		<nav
-			class='flex h-full flex-col justify-between gap-12 text-left md:flex-row md:w-full md:gap-5'
+		<div
+			id='astro-header-drawer'
+			class='md:bg-transparent bg-[#0F172A] md:shadow-none shadow-elevated md:border-none border border-[#1E293B] md:h-auto md:static absolute transition-all duration-300 ease-in-out translate-x-full md:translate-x-0 top-16 right-4 p-6 md:p-0 w-64 md:w-auto z-50'
 		>
-			<div
-				class='flex flex-col gap-4 md:flex-row md:border-r-2 border-black pr-4 dark:border-white'
-			>
-				<HeaderLink href='/tags' class='flex items-center gap-1 text-2xl md:text-base'>
-					<TagIcon /> Tags
-				</HeaderLink>
-			</div>
+			<nav class='flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center'>
+				<div
+					class='flex items-center gap-4 pt-4 md:pt-0 border-t md:border-t-0 border-[#1E293B] md:hidden'
+				>
+					{
+						SOCIALNETWORKS.map((network) => (
+							<HeaderLink
+								class='text-[#94A3B8] hover:text-[#60A5FA] transition-colors p-2 hover:bg-[#1E293B] rounded-lg'
+								href={network.url}
+								target='_blank'
+								aria-label={network.name}
+							>
+								<network.icon />
+							</HeaderLink>
+						))
+					}
+				</div>
+			</nav>
+		</div>
 
-			<div class='flex justify-center items-center md:justify-end gap-3 md:p-0'>
+		<div class='flex items-center gap-4'>
+			<div class='hidden md:flex items-center gap-2'>
 				{
 					SOCIALNETWORKS.map((network) => (
-						<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
-							<span>{<network.icon />} </span>
+						<HeaderLink
+							class='text-[#94A3B8] hover:text-[#60A5FA] transition-colors p-1 hover:bg-[#1E293B]'
+							href={network.url}
+							target='_blank'
+							aria-label={network.name}
+						>
+							<network.icon />
 						</HeaderLink>
 					))
 				}
 			</div>
-		</nav>
-	</div>
-
-	<div class='flex items-center gap-3 md:pl-3' transition:persist='navbar'>
-		<div>
 			<Search />
+			<button
+				id='astro-header-drawer-button'
+				type='button'
+				class='md:hidden p-2 text-[#CBD5E1] hover:text-[#F8FAFC] hover:bg-[#1E293B] transition-colors'
+			>
+				<MenuIcon />
+				<span class='sr-only'>Show Menu</span>
+			</button>
 		</div>
-		<ToggleTheme />
-		<button id='astro-header-drawer-button' type='button' class='md:ml-6 md:hidden'>
-			<MenuIcon />
-			<span class='sr-only'>Show Menu</span>
-		</button>
 	</div>
 </header>
 <script>
@@ -57,9 +72,9 @@ import { SOCIALNETWORKS } from '@/data/links'
 			menuButton?.contains(event.target as HTMLButtonElement)
 
 		if (isClickInside) {
-			menu?.classList.toggle('translate-x-96')
+			menu?.classList.toggle('translate-x-full')
 		} else {
-			menu?.classList.add('translate-x-96')
+			menu?.classList.add('translate-x-full')
 		}
 	})
 </script>

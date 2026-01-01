@@ -8,9 +8,10 @@ export interface Props {
 	description?: string
 	ogImage?: string | undefined
 	articleDate?: string | undefined
+	keywords?: string | undefined
 }
 
-const { title, description = siteConfig.description, ogImage, articleDate } = Astro.props
+const { title, description = siteConfig.description, ogImage, articleDate, keywords } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const socialImageURL = new URL(ogImage ? ogImage : '/open-graph.png', Astro.url).href
 
@@ -41,6 +42,7 @@ import { AstroFont } from 'astro-font'
 <meta name='title' content={siteTitle} />
 <meta name='description' content={description} />
 <meta name='author' content={siteConfig.author} />
+{keywords && <meta name='keywords' content={keywords} />}
 
 <!-- Open Graph / Facebook -->
 <meta property='og:type' content={articleDate ? 'article' : 'website'} />
@@ -115,3 +117,54 @@ import { AstroFont } from 'astro-font'
 		}
 	]}
 />
+
+<script type='application/ld+json'>
+	{
+		"@context": "https://schema.org",
+		"@type": "Blog",
+		"name": "CloudSentry Blog",
+		"url": "https://blog.cloudsentry.in",
+		"description": "Cloud, DevOps, Security & Engineering insights by CloudSentry",
+		"publisher": {
+			"@type": "Organization",
+			"name": "CloudSentry",
+			"url": "https://blog.cloudsentry.in",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://blog.cloudsentry.in/open-graph.png"
+			}
+		},
+		"author": {
+			"@type": "Organization",
+			"name": "CloudSentry"
+		}
+	}
+</script>
+
+{
+	articleDate && (
+		<script
+			type='application/ld+json'
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'BlogPosting',
+				headline: title,
+				description: description,
+				image: socialImageURL,
+				datePublished: articleDate,
+				author: {
+					'@type': 'Organization',
+					name: 'CloudSentry'
+				},
+				publisher: {
+					'@type': 'Organization',
+					name: 'CloudSentry',
+					logo: {
+						'@type': 'ImageObject',
+						url: 'https://blog.cloudsentry.in/open-graph.png'
+					}
+				}
+			})}
+		/>
+	)
+}

@@ -1,8 +1,8 @@
 ---
-import ListCategories from '@/components/ListCategories'
-import ListPosts from '@/components/ListPosts'
-import TitlePage from '@/components/TitlePage'
-import BaseLayout from '@/layouts/BaseLayout'
+import ListCategories from '@/components/ListCategories.astro'
+import ListPosts from '@/components/ListPosts.astro'
+import TitlePage from '@/components/TitlePage.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getPosts } from '@/utils'
 import { siteConfig } from '@/site-config'
 
@@ -11,12 +11,26 @@ const posts = await getPosts(MAX_POSTS)
 ---
 
 <BaseLayout title='Home'>
-	<TitlePage title={siteConfig.title} />
-	<ListCategories />
+	<div class='space-y-8'>
+		<section class='text-center space-y-6'>
+			<TitlePage title={siteConfig.title} />
+		</section>
 
-	<div>
-		<h2 class='text-lg font-medium tracking-wide text-end'>Latest Posts</h2>
-		<ListPosts FirstBig={true} posts={posts} />
+		<section>
+			<div class='flex justify-center'>
+				<ListCategories />
+			</div>
+		</section>
+
+		<section class='space-y-8'>
+			<div class='flex items-center justify-between'>
+				<h2 class='text-2xl font-semibold text-[#F8FAFC]'>Latest Articles</h2>
+				<a href='/post' class='text-[#60A5FA] hover:text-[#93C5FD] font-medium transition-colors'>
+					View all posts →
+				</a>
+			</div>
+			<ListPosts FirstBig={true} posts={posts} />
+		</section>
 	</div>
 </BaseLayout>
 

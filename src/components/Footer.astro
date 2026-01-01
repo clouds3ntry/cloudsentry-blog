@@ -4,7 +4,33 @@ import { siteConfig } from '@/site-config'
 const today = new Date()
 ---
 
-<footer class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
-	&copy; {today.getFullYear()}
-	{siteConfig.author}. All rights reserved.
+<footer class='mt-8 border-t border-[#1E293B] bg-[#020617]'>
+	<div class='max-w-6xl mx-auto px-4 py-12'>
+		<div class='flex flex-col items-center space-y-6'>
+			<nav class='flex flex-wrap justify-center gap-6 text-sm'>
+				<a href='/about' class='text-[#94A3B8] hover:text-[#60A5FA] transition-colors font-medium'
+					>About</a
+				>
+				<a href='/privacy' class='text-[#94A3B8] hover:text-[#60A5FA] transition-colors font-medium'
+					>Privacy</a
+				>
+				<a href='/terms' class='text-[#94A3B8] hover:text-[#60A5FA] transition-colors font-medium'
+					>Terms</a
+				>
+				<a
+					href='https://hash.cloudsentry.in/'
+					target='_blank'
+					rel='noopener noreferrer'
+					class='text-[#94A3B8] hover:text-[#60A5FA] transition-colors font-medium'>Hash Tool</a
+				>
+			</nav>
+
+			<div class='text-center space-y-2'>
+				<div class='text-sm text-[#94A3B8]'>
+					&copy; {today.getFullYear()}
+					{siteConfig.author}. All rights reserved.
+				</div>
+			</div>
+		</div>
+	</div>
 </footer>

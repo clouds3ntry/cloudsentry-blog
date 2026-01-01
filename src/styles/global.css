@@ -3,38 +3,200 @@
 @tailwind utilities;
 
 @layer base {
-	/* body {
-		transition: background-color 0.5s ease;
-	} */
-
-	.prose code {
-		@apply text-base;
+	/* Modern Dark Theme - Professional Technical Blog */
+	
+	/* Prose Content Styling */
+	.prose {
+		@apply text-[#CBD5E1] max-w-none;
 	}
-
-	/* prose styles here */
+	
 	.prose h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply text-zinc-800 dark:text-zinc-100   !important;
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose h5,
+	.prose h6 {
+		@apply text-[#F8FAFC] font-semibold tracking-tight !important;
+	}
+	
+	.prose h1 {
+		@apply text-3xl md:text-4xl mb-6 !important;
+	}
+	
+	.prose h2 {
+		@apply text-2xl md:text-3xl mt-12 mb-4 !important;
+	}
+	
+	.prose h3 {
+		@apply text-xl md:text-2xl mt-8 mb-3 !important;
+	}
+	
+	.prose p {
+		@apply text-[#CBD5E1] leading-7 mb-6 !important;
+	}
+	
+	.prose li {
+		@apply text-[#CBD5E1] leading-7 !important;
+	}
+	
+	.prose a {
+		@apply text-[#60A5FA] hover:text-[#93C5FD] hover:underline transition-colors duration-200 !important;
+	}
+	
+	.prose strong {
+		@apply text-[#F8FAFC] font-semibold !important;
+	}
+	
+	.prose em {
+		@apply text-[#E2E8F0] !important;
+	}
+	
+	/* Inline Code */
+	.prose code {
+		@apply text-[#E5E7EB] bg-[#1E293B] px-2 py-1 rounded-md border border-[#334155] text-sm font-mono !important;
+	}
+	
+	/* Code Blocks - Dark Theme Only */
+	.prose pre {
+		@apply bg-[#020617] border border-[#1E293B] rounded-xl p-6 overflow-x-auto shadow-lg relative !important;
+		padding-top: 0 !important;
 	}
 
-	html.dark .shiki,
-	html.dark .shiki span {
-	  color: var(--shiki-dark) !important;
-	  background-color: theme(colors.gray.900) !important;
+	.prose pre code {
+		@apply text-[#E5E7EB] bg-transparent px-0 py-0 border-0 text-sm font-mono !important;
+	}
+
+	/* Copy Button Styling */
+	.prose pre:hover .copy-btn {
+		opacity: 1;
+	}
+
+	.prose pre .copy-btn {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+		width: 2rem;
+		height: 2rem;
+		background-color: #1E293B;
+		border: 1px solid #334155;
+		border-radius: 0.5rem;
+		opacity: 0;
+		transition: all 0.2s;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		color: #CBD5E1;
+	}
+
+	.prose pre .copy-btn:hover {
+		background-color: #334155;
+		color: #F8FAFC;
+	}
+	
+	/* Blockquotes */
+	.prose blockquote {
+		@apply border-l-4 border-l-[#3B82F6] bg-[#0F172A] px-6 py-4 rounded-r-lg text-[#CBD5E1] italic !important;
+	}
+	
+	.prose blockquote p {
+		@apply mb-0 !important;
+	}
+	
+	/* Tables */
+	.prose table {
+		@apply border border-[#1E293B] rounded-lg overflow-hidden !important;
+	}
+	
+	.prose thead th {
+		@apply bg-[#0F172A] text-[#F8FAFC] font-semibold border-b border-[#1E293B] px-4 py-3 !important;
+	}
+	
+	.prose tbody td {
+		@apply border-t border-[#1E293B] px-4 py-3 !important;
+	}
+	
+	.prose tbody tr:hover {
+		@apply bg-[#0F172A] !important;
+	}
+	
+	/* Lists */
+	.prose ul,
+	.prose ol {
+		@apply space-y-2 !important;
+	}
+	
+	.prose ul li::marker,
+	.prose ol li::marker {
+		@apply text-[#94A3B8] !important;
+	}
+	
+	/* Horizontal Rules */
+	.prose hr {
+		@apply border-[#1E293B] my-12 !important;
+	}
+	
+	/* Syntax Highlighting */
+	.shiki,
+	.shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: #020617 !important;
 	}
 }
 
+/* Component Utilities */
+@layer components {
+	/* Card Component */
+	.card {
+		@apply bg-[#0F172A] border border-[#1E293B] rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
+	}
+	
+	/* Button Components */
+	.btn-primary {
+		@apply bg-[#3B82F6] hover:bg-[#2563EB] text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200;
+	}
+	
+	.btn-secondary {
+		@apply bg-[#1E293B] hover:bg-[#334155] text-[#CBD5E1] hover:text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 border border-[#334155];
+	}
+	
+	/* Pill Navigation */
+	.nav-pill {
+		@apply bg-[#1E293B] hover:bg-[#334155] text-[#CBD5E1] hover:text-white px-4 py-2 rounded-full transition-colors duration-200 border border-[#334155];
+	}
+	
+	.nav-pill.active {
+		@apply bg-[#3B82F6] text-white border-[#3B82F6];
+	}
+	
+	/* Surface Layers */
+	.surface-primary {
+		@apply bg-[#020617];
+	}
+	
+	.surface-secondary {
+		@apply bg-[#0F172A];
+	}
+	
+	.surface-tertiary {
+		@apply bg-[#1E293B];
+	}
+}
+
+/* Glass Effect */
 .glass {
-	background: rgba(57, 56, 56, 0.52);
-	backdrop-filter: blur(13px) saturate(150%);
-	-webkit-backdrop-filter: blur(13px) saturate(150%);
-	z-index: -1;
+	background: rgba(15, 23, 42, 0.8);
+	backdrop-filter: blur(16px) saturate(150%);
+	-webkit-backdrop-filter: blur(16px) saturate(150%);
+	border: 1px solid rgba(51, 65, 85, 0.3);
 }
 
-.shadow {
-	box-shadow: -5px 3px 8px 1px rgba(0, 0, 0, 0.12);
+/* Enhanced Shadow */
+.shadow-elevated {
+	box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus States */
+.focus-ring {
+	@apply focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:ring-offset-2 focus:ring-offset-[#020617];
 }

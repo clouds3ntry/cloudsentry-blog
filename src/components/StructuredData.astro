@@ -1,0 +1,34 @@
+---
+import { siteConfig } from '@/data/site.config'
+
+const { post, url } = Astro.props
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: post.data.title,
+	description: post.data.description,
+	image: post.data.heroImage ? new URL(post.data.heroImage.src, url).href : null,
+	datePublished: post.data.pubDate.toISOString(),
+	dateModified: post.data.pubDate.toISOString(),
+	author: {
+		'@type': 'Organization',
+		name: siteConfig.author,
+		url: siteConfig.site
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: siteConfig.author,
+		url: siteConfig.site
+	},
+	mainEntityOfPage: {
+		'@type': 'WebPage',
+		'@id': url
+	},
+	keywords: post.data.tags.join(', '),
+	articleSection: post.data.category,
+	inLanguage: 'en-US'
+}
+---
+
+<script type='application/ld+json' set:html={JSON.stringify(structuredData)} />

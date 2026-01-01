@@ -3,7 +3,7 @@ title: 'MacBook'
 description: 'The new MacBook Pro 2022 is here. With the Apple M2 chip, a new design, and more, the new MacBook Pro is the best laptop Apple has ever made.'
 pubDate: 'Jul 02 2022'
 heroImage: '../../assets/images/book.jpg'
-category: 'Category 4'
+category: 'Tutorials & Guides'
 tags: ['PC']
 ---
 
@@ -156,8 +156,10 @@ Astro component syntax is a superset of HTML. It was designed to feel familiar t
 In Astro, you use the standard `kebab-case` format for all HTML attributes instead of the `camelCase` used in JSX. This even works for `class`, which is not supported by React.
 
 ```jsx del={1} ins={2} title="example.astro"
-<div className="box" dataValue="3" />
-<div class="box" data-value="3" />
+<>
+	<div className='box' dataValue='3' />
+	<div class='box' data-value='3' />
+</>
 ```
 
 #### Multiple Elements

@@ -1,17 +1,22 @@
-import TwitterIcon from '@/components/icons/TwitterIcon'
-import GithubIcon from '@/components/icons/GithubIcon'
+import XIcon from '@/components/icons/XIcon.astro'
+import GithubIcon from '@/components/icons/GithubIcon.astro'
+import LinkedinIcon from '@/components/icons/LinkedinIcon.astro'
 
 // ADD YOUR SOCIAL NETWORKS HERE
 export const SOCIALNETWORKS = [
 	{
-		name: 'Github',
-		url: 'https://github.com/danielcgilibert/blog-template',
+		name: 'GitHub',
+		url: 'https://github.com/clouds3ntry/',
 		icon: GithubIcon
 	},
-
 	{
-		name: 'Twitter',
-		url: 'https://github.com/danielcgilibert/blog-template',
-		icon: TwitterIcon
+		name: 'LinkedIn',
+		url: 'https://linkedin.com/company/cloudsentry',
+		icon: LinkedinIcon
+	},
+	{
+		name: 'X',
+		url: 'https://x.com/cloud_sentry',
+		icon: XIcon
 	}
 ] as const

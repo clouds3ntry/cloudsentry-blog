@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TitlePage from '../components/TitlePage.astro'
+
+const title = 'Privacy Policy | CloudSentry'
+const description =
+	'Privacy Policy for CloudSentry explaining how we handle privacy, cookies, third-party services, and data security.'
+---
+
+<BaseLayout title={title} description={description}>
+	<TitlePage title='Privacy Policy' />
+	<section class='policy-container'>
+		<p>
+			At <strong>CloudSentry</strong>, your privacy is important to us. This Privacy Policy document
+			explains what information is collected, how it is used, and how we safeguard your data when
+			you visit our website.
+		</p>
+
+		<p>
+			By using CloudSentry, you agree to the collection and use of information in accordance with
+			this Privacy Policy.
+		</p>
+
+		<h2>Information We Collect</h2>
+		<p>
+			CloudSentry does not collect any personally identifiable information unless you voluntarily
+			provide it.
+		</p>
+		<ul>
+			<li>We do not require account registration</li>
+			<li>No personal data is stored on our servers</li>
+			<li>All tools run locally in your browser</li>
+		</ul>
+
+		<h2>Cookies and Web Beacons</h2>
+		<p>
+			CloudSentry may use cookies to store information about visitors’ preferences and to optimize
+			the website experience by customizing our web page content based on visitors’ browser type or
+			other information.
+		</p>
+		<p>You can choose to disable cookies through your individual browser options.</p>
+
+		<h2>Third-Party Privacy Policies</h2>
+		<p>
+			CloudSentry’s Privacy Policy does not apply to other advertisers or websites. We advise you to
+			consult the respective Privacy Policies of third-party services for more detailed information
+			about their practices and instructions about how to opt out of certain options.
+		</p>
+
+		<h2>Third-Party Services</h2>
+		<p>
+			CloudSentry may use third-party services such as analytics tools to understand website traffic
+			and improve content quality. These services may collect non-personal data in accordance with
+			their own privacy policies.
+		</p>
+
+		<h2>Data Security</h2>
+		<p>
+			We prioritize data security and take reasonable measures to protect information. However,
+			please note that no method of transmission over the Internet or electronic storage is 100%
+			secure.
+		</p>
+
+		<h2>Children’s Information</h2>
+		<p>
+			CloudSentry does not knowingly collect any Personal Identifiable Information from children
+			under the age of 13. If you believe that your child has provided this kind of information on
+			our website, please contact us and we will promptly remove such information from our records.
+		</p>
+
+		<h2>Consent</h2>
+		<p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+
+		<h2>Updates to This Policy</h2>
+		<p>
+			We may update this Privacy Policy from time to time. Any changes will be posted on this page
+			with an updated revision date.
+		</p>
+
+		<p class='updated-date'>
+			<strong>Last updated:</strong> January 2026
+		</p>
+	</section>
+</BaseLayout>
+
+<style>
+	.policy-container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 2rem 1rem;
+		color: inherit;
+	}
+
+	h1 {
+		/* Removed - now uses TitlePage component */
+	}
+
+	h2 {
+		margin-top: 2rem;
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: #f8fafc;
+	}
+
+	p,
+	li {
+		line-height: 1.7;
+		font-size: 1rem;
+		color: #cbd5e1;
+	}
+
+	ul {
+		padding-left: 0;
+		list-style: none;
+		margin: 1rem 0;
+	}
+
+	li {
+		position: relative;
+		padding-left: 1.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	li::before {
+		content: '▸';
+		position: absolute;
+		left: 0;
+		color: #3b82f6;
+		font-weight: bold;
+	}
+
+	.updated-date {
+		margin-top: 2rem;
+		font-size: 0.9rem;
+		color: #94a3b8;
+	}
+
+	/* Responsive design */
+	@media (max-width: 768px) {
+		.policy-container {
+			padding: 1.5rem 1rem;
+		}
+
+		h2 {
+			font-size: 1.3rem;
+			margin-top: 1.5rem;
+		}
+
+		p,
+		li {
+			font-size: 0.95rem;
+			line-height: 1.6;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.policy-container {
+			padding: 1rem 0.75rem;
+		}
+
+		h2 {
+			font-size: 1.2rem;
+		}
+	}
+</style>
